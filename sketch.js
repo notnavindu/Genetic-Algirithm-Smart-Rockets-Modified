@@ -21,7 +21,12 @@ function setup() {
   createCanvas(800, 600);
   population = new Population();
   lifeP = createP();
-
+  /*
+  t = createElement()
+    .html("<h3>Other Attributes</h3> Max Force: ")
+    .style("color:#fff");
+  maxForceI = createInput();
+*/
   pg = createGraphics(800, 600);
   target = createVector(width / 4, 50);
   console.log(mouseX);
