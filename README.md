@@ -1,3 +1,19 @@
 # Genetic-Algirithm-Smart-Rockets-Modified
 
-This is a modified version of Codeing Train's
+This is a modified version of Coding Train's [Smart Rockets](https://github.com/CodingTrain/website/tree/master/CodingChallenges/CC_029_SmartRockets/P5)
+
+### Modifications
+
+- Changed Colors
+- Changed Size
+- Added trails
+- Added more information at the bottom
+- Movable Target \*
+- More to come
+-
+
+### \*Movable target
+
+Click anywhere on the screen to move the target
+
+![screen shot. no one died](https://github.com/notnavpy/Genetic-Algirithm-Smart-Rockets-Modified/screenshot.png)
