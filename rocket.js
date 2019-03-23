@@ -31,6 +31,15 @@ function Rocket(dna) {
     // Takes distance to target
     var d = dist(this.pos.x, this.pos.y, target.x, target.y);
 
+    //Draw a line
+    stroke(255);
+    strokeWeight(1);
+    l = line(this.pos.x, this.pos.y, target.x, target.y);
+
+    stroke(0);
+    strokeWeight(2);
+    l = line(this.pos.x, this.pos.y, target.x, target.y);
+
     // Maps range of fitness
     this.fitness = map(d, 0, width, width, 0);
     // If rocket gets to target increase fitness of rocket

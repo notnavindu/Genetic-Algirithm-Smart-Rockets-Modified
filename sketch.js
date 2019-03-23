@@ -10,6 +10,7 @@ var target;
 // Max force applied to rocket
 var maxforce = 0.4;
 var pg;
+var gen = 0;
 
 // Dimensions of barrier
 var rx = 150;
@@ -21,6 +22,7 @@ function setup() {
   createCanvas(800, 600);
   population = new Population();
   lifeP = createP();
+  genP = createP();
   /*
   t = createElement()
     .html("<h3>Other Attributes</h3> Max Force: ")
@@ -49,6 +51,8 @@ function draw() {
   if (count == lifespan) {
     population.evaluate();
     population.selection();
+    gen++;
+    genP.html("Genaration: " + gen);
     count = 0;
   }
 
