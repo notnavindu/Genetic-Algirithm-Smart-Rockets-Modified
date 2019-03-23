@@ -16,4 +16,4 @@ This is a modified version of Coding Train's [Smart Rockets](https://github.com/
 
 Click anywhere on the screen to move the target
 
-!(https://github.com/notnavpy/Genetic-Algirithm-Smart-Rockets-Modified/blob/master/screenshot.PNG)
+![screenshotfirts](https://github.com/notnavpy/Genetic-Algirithm-Smart-Rockets-Modified/blob/master/screenshot.PNG)
