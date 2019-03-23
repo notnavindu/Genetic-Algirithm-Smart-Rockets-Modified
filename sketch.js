@@ -8,34 +8,42 @@ var count = 0;
 // Where rockets are trying to go
 var target;
 // Max force applied to rocket
-var maxforce = 0.5;
+var maxforce = 0.4;
 var pg;
 
 // Dimensions of barrier
 var rx = 150;
 var ry = 300;
-var rw = 700;
+var rw = 500;
 var rh = 50;
 
 function setup() {
   createCanvas(800, 600);
   population = new Population();
   lifeP = createP();
+
   pg = createGraphics(800, 600);
   target = createVector(width / 4, 50);
+  console.log(mouseX);
+}
+
+function mouseClicked() {
+  //change target position when clicked
+  target = createVector(mouseX, mouseY);
+  // prevent default
+  return false;
 }
 
 function draw() {
   population.run();
 
   // Displays count to window
-  lifeP.html(count);
+  lifeP.html("Timestamp: " + count);
 
   count++;
   if (count == lifespan) {
     population.evaluate();
     population.selection();
-    // Population = new Population();
     count = 0;
   }
 
@@ -43,11 +51,13 @@ function draw() {
   rect(0, 0, width, height);
   // Renders barrier for rockets
   fill(255);
-
+  stroke(0);
+  strokeWeight(2);
   rect(rx, ry, rw, rh);
   // Renders target
   ellipse(target.x, target.y, 32, 32);
 
+  strokeWeight(0);
   //trails
   pg.background(0);
   pg.noFill();

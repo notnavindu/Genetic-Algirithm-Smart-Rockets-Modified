@@ -2,14 +2,20 @@ function Population() {
   // Array of rockets
   this.rockets = [];
   // Amount of rockets
-  this.popsize = 100;
+  this.popsize = 500;
   // Amount parent rocket partners
   this.matingpool = [];
+
+  //Paragraph data
+  var completedP = createP();
+  var crashedP = createP();
+  var poplationP = createP();
 
   // Associates a rocket to an array index
   for (var i = 0; i < this.popsize; i++) {
     this.rockets[i] = new Rocket();
   }
+  maxFitP = createP();
 
   this.evaluate = function() {
     var maxfit = 0;
@@ -20,6 +26,7 @@ function Population() {
       // If current fitness is greater than max, then make max equal to current
       if (this.rockets[i].fitness > maxfit) {
         maxfit = this.rockets[i].fitness;
+        maxFitP.html("Max Fit: " + maxfit);
       }
     }
     // Normalises fitnesses
@@ -56,10 +63,34 @@ function Population() {
 
   // Calls for update and show functions
   this.run = function() {
+    this.completedCount = 0;
+    this.crashedCount = 0;
+
     for (var i = 0; i < this.popsize; i++) {
       this.rockets[i].update();
+      if (this.rockets[i].completed == true) {
+        this.completedCount++;
+      }
+      if (this.rockets[i].crashed == true) {
+        this.crashedCount++;
+      }
       // Displays rockets to screen
       this.rockets[i].show();
     }
+    //update data
+    completedP.html(
+      "Target reached: " +
+        this.completedCount +
+        " Out Of " +
+        String(this.popsize)
+    );
+
+    //crashed count
+    crashedP.html(
+      "Crashed: " + this.crashedCount + " Out Of " + String(this.popsize)
+    );
+
+    //show pop size
+    poplationP.html("Population size: " + this.popsize);
   };
 }

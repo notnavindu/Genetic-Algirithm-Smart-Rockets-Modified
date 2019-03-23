@@ -5,6 +5,9 @@
 
 // Constructor function
 function Rocket(dna) {
+  this.completed;
+  completedP = createP();
+  completedCount = 0;
   //used for trails
   var al = [];
   // Physics of rocket at current instance
@@ -49,9 +52,10 @@ function Rocket(dna) {
     // Checks distance from rocket to target
     var d = dist(this.pos.x, this.pos.y, target.x, target.y);
     // If distance less than 10 pixels, then it has reached target
-    if (d < 10) {
+    if (d < 20) {
       this.completed = true;
-      this.pos = target.copy();
+
+      //this.pos = target.copy();
     }
     // Rocket hit the barrier
     if (
@@ -83,20 +87,30 @@ function Rocket(dna) {
   };
   // displays rocket to window
   this.show = function(maxfit) {
+    this.side = 4;
     // push and pop allow's rotating and translation not to affect other objects
     push();
     //color customization of rockets
     noStroke();
+    //color based on state
+    if (this.crashed) {
+      fill(255, 0, 0);
+      this.side = 10;
+    } else if (this.completed) {
+      fill(0, 255, 0);
+      this.side = 4;
+    } else {
+      fill(0, 0, 255);
+      this.side = 4;
+    }
 
-    fill(255, 0, 0);
-    console.log(this.fitness);
     //translate to the postion of rocket
     translate(this.pos.x, this.pos.y);
     //rotatates to the angle the rocket is pointing
     rotate(this.vel.heading());
     //creates a rectangle shape for rocket
     rectMode(CENTER);
-    rect(0, 0, 4, 4);
+    rect(0, 0, this.side, this.side);
     pop();
   };
 }
